@@ -1,6 +1,7 @@
 <?php
 /**
  * @author Márcio Dias <marciojr91@gmail.com>
+ * @license https://github.com/marciodojr/autentique/blob/master/LICENSE (MIT License)
  */
 
 namespace Mdojr\Autentique\Tests;
