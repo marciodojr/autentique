@@ -1,0 +1,32 @@
+{
+    "name": "marciodojr/autentique",
+    "description": "Sdk para o autentique",
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Márcio Dias",
+            "email": "marciojr91@gmail.com"
+        }
+    ],
+    "scripts": {
+        "test": [
+            "phpunit"
+        ]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mdojr\\Autentique\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mdojr\\Autentique\\Tests\\": "tests"
+        }
+    }
+}

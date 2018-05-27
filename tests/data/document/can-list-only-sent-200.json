@@ -1,0 +1,64 @@
+{
+    "data": [
+        {
+            "uuid": "9ab23456325c40c2a5023051cf4bbf0e",
+            "nome": "Contrato de Marketing",
+            "created": "2018-01-01 17:09:00",
+            "assinatura": "e5b62017be1b46768e47e43e7a6fb233",
+            "transacao": "enviado",
+            "funcao": "assinar",
+            "publicado": "2018-01-01 17:09:01",
+            "assinaturas": [
+                {
+                    "nome": "Cassiano Calegari",
+                    "email": "cassiano@autentique.com.br",
+                    "cpf": "36653414930",
+                    "nascimento": "1931-01-01",
+                    "empresa": "Autentique",
+                    "funcao": "assinar",
+                    "visualizado": {
+                        "created": "2018-01-01 17:09:02",
+                        "motivo": null,
+                        "ipv4": "170.233.43.253",
+                        "geotrack": {
+                            "country": "Brasil",
+                            "countryISO": "BR",
+                            "state": null,
+                            "stateISO": null,
+                            "city": null,
+                            "zipcode": null,
+                            "latitude": -22.8305,
+                            "longitude": -43.2192
+                        }
+                    },
+                    "assinado": {},
+                    "rejeitado": {},
+                    "mail": {
+                        "opened": null,
+                        "refused": null,
+                        "delivered": null,
+                        "reason": null
+                    }
+                },
+                {
+                    "nome": null,
+                    "email": "cassiano2@autentique.com.br",
+                    "cpf": null,
+                    "nascimento": null,
+                    "empresa": null,
+                    "funcao": "assinar",
+                    "visualizado": {},
+                    "assinado": {},
+                    "rejeitado": {},
+                    "mail": {
+                        "opened": null,
+                        "refused": null,
+                        "delivered": null,
+                        "reason": null
+                    }
+                }
+            ]
+        }
+    ],
+    "total": "1"
+}

@@ -1,0 +1,28 @@
+{
+    "nome": "Cassiano Calegari",
+    "empresa": "Autentique",
+    "email": "cassiano@autentique.com.br",
+    "cpf": "36653414930",
+    "nascimento": "1931-01-01",
+    "created": "2018-01-01 16:33:31",
+    "confirmed": true,
+    "founder": false,
+    "configs": {
+        "texto": "Por favor acesse e assine eletronicamente o documento clicando no botão abaixo.",
+        "cores": [
+            "#045c96"
+        ],
+        "template": "08f7809b-ac24-47e0-a517-667c92e1fb6d",
+        "imagem": "app/views/libs/imgs/autentique.png",
+        "formato": "s",
+        "assinatura": ""
+    },
+    "creditos": {
+        "uuid": null,
+        "plano": "Grátis",
+        "gasto": 0,
+        "total": 5,
+        "bonus": 5,
+        "validade": "2018-02-01 16:33:31"
+    }
+}
