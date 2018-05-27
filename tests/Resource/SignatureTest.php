@@ -6,8 +6,8 @@
 
 namespace Mdojr\Autentique\Resource;
 
-use Mdojr\Autentique\Tests\TestCase;
 use GuzzleHttp\Psr7\Response;
+use Mdojr\Autentique\Tests\TestCase;
 
 class SignatureTest extends TestCase
 {
@@ -24,7 +24,7 @@ class SignatureTest extends TestCase
 
     private function setUpCanRetrieve()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/signature/retrieve-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/signature/retrieve-200.json'));
     }
 
     public function testCanRetrieve()
@@ -37,7 +37,7 @@ class SignatureTest extends TestCase
 
     private function setUpCanAccept()
     {
-        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/signature/accept-200.html'));
+        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/signature/accept-200.html'));
     }
 
     public function testCanAccept()
@@ -50,7 +50,7 @@ class SignatureTest extends TestCase
 
     private function setUpCanReject()
     {
-        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/signature/reject-200.html'));
+        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/signature/reject-200.html'));
     }
 
     public function testCanReject()
@@ -71,5 +71,4 @@ class SignatureTest extends TestCase
     {
         return 'random.signature.token';
     }
-
 }

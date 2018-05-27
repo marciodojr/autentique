@@ -7,14 +7,13 @@
 namespace Mdojr\Autentique;
 
 use GuzzleHttp\Client;
-
-use Mdojr\Autentique\Resource\Folder;
-use Mdojr\Autentique\Resource\Document;
 use Mdojr\Autentique\Resource\Account;
+use Mdojr\Autentique\Resource\Document;
+use Mdojr\Autentique\Resource\Folder;
 use Mdojr\Autentique\Resource\Signature;
 
 /**
- * This class helps to create Folders, Documents, Accounts and Signatures
+ * This class helps to create Folders, Documents, Accounts and Signatures.
  */
 class Autentique
 {
@@ -25,7 +24,7 @@ class Autentique
 
     /**
      * Initializes the Autentique object with a configured guzzle client.
-     * 
+     *
      * Here's an example of creating an Autentique object:
      *
      *     $client = new \GuzzleHttp\Client([
@@ -34,9 +33,9 @@ class Autentique
      *              'X-Autntiq-Api' => $token // sandbox token or production token
      *          ]
      *     ]);
-     * 
+     *
      *     $autentique = \Mdojr\Autentique\Autentique($client);
-     * 
+     *
      * @param \GuzzleHttp\Client $client Guzzle http client.
      */
     public function __construct(Client $client)
@@ -46,7 +45,7 @@ class Autentique
 
     /**
      * Creates a \Mdojr\Autentique\Resource\Folder object.
-     * 
+     *
      * @see Mdojr\Autentique\Resource\Folder for a list of available operations.
      */
     public function folder(): Folder
@@ -56,7 +55,7 @@ class Autentique
 
     /**
      * Creates a Mdojr\Autentique\Resource\Document object.
-     * 
+     *
      * @see Mdojr\Autentique\Resource\Document for a list of available operations.
      */
     public function document(): Document
@@ -66,7 +65,7 @@ class Autentique
 
     /**
      * Creates an \Mdojr\Autentique\Resource\Account object.
-     * 
+     *
      * @see \Mdojr\Autentique\Resource\Account for a list of available operations.
      */
     public function account(): Account
@@ -76,7 +75,7 @@ class Autentique
 
     /**
      * Creates a \Mdojr\Autentique\Resource\Signature object.
-     * 
+     *
      * @see \Mdojr\Autentique\Resource\Signature for a list of available operations.
      */
     public function signature(): Signature

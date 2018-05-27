@@ -6,19 +6,17 @@
 
 namespace Mdojr\Autentique\Resource;
 
-use GuzzleHttp\Client;
 use Exception;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\RequestException;
-use Mdojr\Autentique\Endpoint;
 use InvalidArgumentException;
+use Mdojr\Autentique\Endpoint;
 
 /**
  * This abstract class simplify resource implementations.
  */
 abstract class AbstractResource
 {
-
     /**
      * @var \GuzzleHttp\Client Guzzle request client.
      */
@@ -26,15 +24,15 @@ abstract class AbstractResource
 
     /**
      * Initializes a autentique resource with a configured guzzle client.
-     * 
+     *
      * @param \GuzzleHttp\Client $client Guzzle http client.
-     */    
+     */
     public function __construct(Client $client)
     {
         $baseUri = $client->getConfig('base_uri');
-        if(!in_array($baseUri, [
+        if (!in_array($baseUri, [
             Endpoint::SANDBOX,
-            Endpoint::PRODUCTION
+            Endpoint::PRODUCTION,
         ])) {
             throw new InvalidArgumentException(sprintf('endpoint \'%s\' não é válido', $baseUri));
         }
@@ -44,13 +42,13 @@ abstract class AbstractResource
 
     /**
      * Uses \GuzzleHttp\Client to communicate with autentique api.
-     * 
-     * @param string $path request path.
-     * @param string $method request method (GET, POST, PUT or DELETE).
-     * @param array $payload request data to send.
-     * 
+     *
+     * @param string $path    request path.
+     * @param string $method  request method (GET, POST, PUT or DELETE).
+     * @param array  $payload request data to send.
+     *
      * @throws \Exception if a 4xx or 5xx http response code is returned.
-     * 
+     *
      * @return \stdClass|string response data from autentique api.
      */
     private function httpRequest(string $path, $method = 'GET', $payload = [])
@@ -65,21 +63,21 @@ abstract class AbstractResource
                 return json_decode($body);
             }
 
-            return $body->getContents();   
-
+            return $body->getContents();
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
             $body = json_decode($response->getBody(), true);
             $message = $body ? implode('. ', $body['errors']) : 'Erro inesperado';
+
             throw new Exception($message, $response->getStatusCode());
         }
     }
 
     /**
      * Protected wrapper for a 'GET' request.
-     * 
+     *
      * @param string $path request path.
-     * 
+     *
      * @return \stdClass|string response data from autentique api.
      */
     protected function get(string $path)
@@ -89,10 +87,10 @@ abstract class AbstractResource
 
     /**
      * Wrapper for a 'POST' request.
-     * 
-     * @param string $path request path.
-     * @param array $payload request payload.
-     * 
+     *
+     * @param string $path    request path.
+     * @param array  $payload request payload.
+     *
      * @return \stdClass|string response data from autentique api.
      */
     protected function post(string $path, array $payload = [])
@@ -102,10 +100,10 @@ abstract class AbstractResource
 
     /**
      * Wrapper for a 'PUT' request.
-     * 
-     * @param string $path request path.
-     * @param array $payload request payload.
-     * 
+     *
+     * @param string $path    request path.
+     * @param array  $payload request payload.
+     *
      * @return \stdClass|string response data from autentique api.
      */
     protected function put(string $path, array $payload = [])
@@ -115,9 +113,9 @@ abstract class AbstractResource
 
     /**
      * Wrapper for a 'DELETE' request.
-     * 
+     *
      * @param string $path request path.
-     * 
+     *
      * @return \stdClass|string response data from autentique api.
      */
     protected function delete(string $path)
