@@ -18,14 +18,15 @@ final class Account extends AbstractResource
 
     /**
      * Returns account information.
-     * 
+     *
      * @return \stdClass account information or empty string.
-     * 
+     *
      * @see https://autentique.docs.apiary.io/#reference/0/contas/informacoes-de-uma-conta.
      */
     public function info()
     {
         $result = $this->get(self::PATH);
+
         return $result;
     }
 }

@@ -6,8 +6,8 @@
 
 namespace Mdojr\Autentique\Resource;
 
-use Mdojr\Autentique\Tests\TestCase;
 use GuzzleHttp\Psr7\Response;
+use Mdojr\Autentique\Tests\TestCase;
 
 class FolderTest extends TestCase
 {
@@ -24,20 +24,20 @@ class FolderTest extends TestCase
 
     public function setUpCanListFolders()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/folder/list-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/folder/list-200.json'));
     }
 
     public function testCanListFolders()
     {
         $folder = $this->getFolder($this->setUpCanListFolders());
-        $s = "fol";
+        $s = 'fol';
         $result = $folder->list($s);
         $this->assertTrue(is_array($result->data));
     }
 
     public function setUpCanRetrieveFolder()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/folder/retrieve-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/folder/retrieve-200.json'));
     }
 
     public function testCanRetrieveFolder()
@@ -54,7 +54,7 @@ class FolderTest extends TestCase
 
     public function setUpCanListDocuments()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/folder/list-doc-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/folder/list-doc-200.json'));
     }
 
     public function testCanListDocuments()
@@ -68,12 +68,12 @@ class FolderTest extends TestCase
 
     public function setUpCanCreateFolder()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/folder/create-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/folder/create-200.json'));
     }
 
     public function testCanCreateFolder()
     {
-        $folderName = "Empresa XYZ";
+        $folderName = 'Empresa XYZ';
         $folder = $this->getFolder($this->setUpCanCreateFolder());
         $data = $folder->create($folderName);
 
@@ -85,7 +85,7 @@ class FolderTest extends TestCase
 
     private function setUpCanMoveDocumentsToFolder()
     {
-        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/folder/move-200.html'));
+        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/folder/move-200.html'));
     }
 
     public function testCanMoveDocumentsToFolder()
@@ -93,7 +93,7 @@ class FolderTest extends TestCase
         $uuid = $this->getFolderUuid();
         $folder = $this->getFolder($this->setUpCanMoveDocumentsToFolder());
         $docSignUuids = [
-            '963f27ea66ae849f8536b08e5c80ab56da4a2a3c'
+            '963f27ea66ae849f8536b08e5c80ab56da4a2a3c',
         ];
         $result = $folder->moveDocumentsTo($uuid, $docSignUuids);
         $this->assertSame($result, '');
@@ -101,7 +101,7 @@ class FolderTest extends TestCase
 
     private function setUpCanUpdateFolderName()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/folder/update-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/folder/update-200.json'));
     }
 
     public function testCanUpdateFolderName()
@@ -115,7 +115,7 @@ class FolderTest extends TestCase
 
     private function setUpCanDeleteFolder()
     {
-        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/folder/delete-200.html'));
+        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/folder/delete-200.html'));
     }
 
     public function testCanDeleteFolder()

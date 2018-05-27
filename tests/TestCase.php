@@ -6,13 +6,12 @@
 
 namespace Mdojr\Autentique\Tests;
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Handler\MockHandler;
 use Exception;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Response;
 use Mdojr\Autentique\Endpoint;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -24,20 +23,20 @@ abstract class TestCase extends BaseTestCase
         $sandboxToken = getenv('AUTENTIQUE_TOKEN');
         $token = self::MOCK_TOKEN;
 
-        if($useBadToken) {
+        if ($useBadToken) {
             $token = $useBadToken;
-        } else if($sandboxToken) {
+        } elseif ($sandboxToken) {
             $token = $sandboxToken;
         }
 
         $config = [
             'base_uri' => Endpoint::SANDBOX,
-            'headers' => [
+            'headers'  => [
                 'X-Autntiq-Api' => $token,
-            ]
+            ],
         ];
 
-        if(!$sandboxToken && $mockedResponse) {
+        if (!$sandboxToken && $mockedResponse) {
             $config['handler'] = MockHandler::createWithMiddleware([$mockedResponse]);
         }
 

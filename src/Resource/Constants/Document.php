@@ -11,7 +11,6 @@ namespace Mdojr\Autentique\Resource\Constants;
  */
 class Document
 {
-
     /**
      * @var string document reason.
      */

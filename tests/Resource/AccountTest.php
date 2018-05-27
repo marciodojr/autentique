@@ -6,15 +6,13 @@
 
 namespace Mdojr\Autentique\Resource;
 
-use Mdojr\Autentique\Tests\TestCase;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client;
-use Exception;
+use GuzzleHttp\Psr7\Response;
 use InvalidArgumentException;
+use Mdojr\Autentique\Tests\TestCase;
 
 class AccountTest extends TestCase
 {
-
     public function testThrowInvalidEndpoint()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -34,7 +32,7 @@ class AccountTest extends TestCase
 
     private function setUpCanGetInfo()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/account/info-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/account/info-200.json'));
     }
 
     public function testCanGetInfo()
@@ -60,7 +58,7 @@ class AccountTest extends TestCase
 
     private function setUpGetInfoThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/account/info-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/account/info-401.json'));
     }
 
     public function testGetInfoThrowsError401()
@@ -78,7 +76,7 @@ class AccountTest extends TestCase
     private function getWrongAccount()
     {
         return new Account(new Client([
-            'base_uri' => 'invalid.endpoint.url'
+            'base_uri' => 'invalid.endpoint.url',
         ]));
     }
 }
