@@ -26,7 +26,7 @@ abstract class AbstractResource
      * Initializes a autentique resource with a configured guzzle client.
      *
      * @param \GuzzleHttp\Client $client Guzzle http client.
-     * 
+     *
      * @throws \InvalidArgumentException if a wrong endpoint was provided
      */
     public function __construct(Client $client)
