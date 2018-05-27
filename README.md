@@ -1,7 +1,8 @@
 # SDK em PHP para o Autentique
 SDK em php para assinatura digital de documentos utilizando o Autentique.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a0ab6c3ea7ae4b03991d85eb0b8ec533)](https://www.codacy.com/app/marciodojr/autentique?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marciodojr/autentique&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a0ab6c3ea7ae4b03991d85eb0b8ec533)](https://www.codacy.com/app/marciodojr/autentique?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marciodojr/autentique&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/marciodojr/autentique.svg?branch=master)](https://travis-ci.org/marciodojr/autentique)
+
 
 ## Observação
 
