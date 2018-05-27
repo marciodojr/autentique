@@ -176,7 +176,9 @@ $uuid = '456325c40c2a5023051cf456325c40';
 $result = $folder->deleteFolder($uuid);
 ```
 
-### Para mais informações sobre parâmetros e consulte a documentação da api: https://autentique.docs.apiary.io
+### Para mais informações sobre parâmetros consulte a documentação da api
+
+https://autentique.docs.apiary.io
 
 
 ## Como testar
