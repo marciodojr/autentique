@@ -6,8 +6,18 @@
 
 namespace Mdojr\Autentique;
 
+/**
+ * This class holds endpoint constants for sandbox and production environments.
+ */
 class Endpoint
 {
+    /**
+     * @var string Sandbox endpoint.
+     */
     const SANDBOX = 'https://sandbox.autentique.com.br';
+
+    /**
+     * @var string Production endpoint.
+     */
     const PRODUCTION = 'https://api.autentique.com.br';
 }
