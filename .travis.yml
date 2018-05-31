@@ -5,6 +5,9 @@ php:
 
 before_script:
   - composer self-update
-  - composer install --prefer-source --no-interaction
+  - composer install --no-interaction
 
 script: composer test
+
+after_script:
+  - vendor/bin/php-coveralls -v
