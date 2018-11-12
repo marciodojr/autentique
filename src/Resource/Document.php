@@ -6,6 +6,8 @@
 
 namespace Mdojr\Autentique\Resource;
 
+use Mdojr\Autentique\Resource\Constants\Document as DocumentConstants;
+
 /**
  * This class allows document manipulation.
  */
@@ -96,7 +98,7 @@ class Document extends AbstractResource
      * @param string|null $mensagem           document message.
      * @param bool|null   $lembreteAssinatura sign remainder.
      * @param bool|null   $lembreteVencimento expiration date remainder.
-     * @param int|null    $frequencia         remainder sending.
+     * @param string|null    $frequencia         remainder sending.
      * @param int|null    $diasVencimento     days left to due date.
      * @param string|null $dataVencimento     due date.
      *
@@ -112,10 +114,14 @@ class Document extends AbstractResource
         string $mensagem = null,
         bool $lembreteAssinatura = null,
         bool $lembreteVencimento = null,
-        int $frequencia = null,
+        string $frequencia = null,
         int $diasVencimento = null,
         string $dataVencimento = null
     ) {
+        if(is_null($frequencia)) {
+            $frequencia = DocumentConstants::FREQUENCIA_SEMANAL;
+        }
+        
         $payload = $this->buildCreatePayload([
             'nome'               => $nome,
             'partes'             => $partes,
