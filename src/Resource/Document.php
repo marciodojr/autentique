@@ -118,22 +118,38 @@ class Document extends AbstractResource
         int $diasVencimento = null,
         string $dataVencimento = null
     ) {
-        if(is_null($frequencia)) {
-            $frequencia = DocumentConstants::FREQUENCIA_SEMANAL;
-        }
-        
-        $payload = $this->buildCreatePayload([
+        $data = [
             'nome'               => $nome,
             'partes'             => $partes,
             'arquivo'            => $arquivo,
-            'rejeitavel'         => $rejeitavel,
-            'mensagem'           => $mensagem,
-            'lembreteAssinatura' => $lembreteAssinatura,
-            'lembreteVencimento' => $lembreteVencimento,
-            'frequencia'         => $frequencia,
-            'diasVencimento'     => $diasVencimento,
-            'dataVencimento'     => $dataVencimento,
-        ]);
+            'rejeitavel'         => $rejeitavel
+        ];
+
+        if (!is_null($mensagem)) {
+            $data['mensagem'] = $mensagem;
+        }
+
+        if (!is_null($lembreteAssinatura)) {
+            $data['lembreteAssinatura'] = $lembreteAssinatura;
+        }
+
+        if (!is_null($lembreteVencimento)) {
+            $data['lembreteVencimento'] = $lembreteVencimento;
+        }
+
+        if (!is_null($diasVencimento)) {
+            $data['diasVencimento'] = $diasVencimento;
+        }
+
+        if (!is_null($frequencia)) {
+            $data['frequencia'] = $frequencia;
+        }
+
+        if (!is_null($dataVencimento)) {
+            $data['dataVencimento'] = $dataVencimento;
+        }
+        
+        $payload = $this->buildCreatePayload($data);
 
         $result = $this->post(self::PATH.'.json', [
             'multipart' => $payload,

@@ -11,7 +11,7 @@
 		</whitelist>
 	</filter>
 	<logging>
-		<log type="coverage-html" target="build/report" charset="UTF-8" yui="true" highlight="true"/>
+		<log type="coverage-html" target="build/report"/>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
 	</logging>
 </phpunit>

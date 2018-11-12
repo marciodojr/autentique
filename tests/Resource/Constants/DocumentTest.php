@@ -17,5 +17,7 @@ class DocumentTest extends TestCase
         $this->assertSame(Document::FUNCAO_ACUSAR_RECEBIMENTO, 'acusar_recebimento');
         $this->assertSame(Document::FUNCAO_RECONHECER, 'reconhecer');
         $this->assertSame(Document::FUNCAO_APROVAR, 'aprovar');
+        $this->assertSame(Document::FREQUENCIA_DIARIA, 'diario');
+        $this->assertSame(Document::FREQUENCIA_SEMANAL, 'semanal');
     }
 }
