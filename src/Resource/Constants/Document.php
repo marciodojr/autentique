@@ -35,4 +35,14 @@ class Document
      * @var string document reason.
      */
     const FUNCAO_APROVAR = 'aprovar';
+ 
+    /**
+     * @var string document reason.
+     */
+    const FREQUENCIA_SEMANAL = 'semanal';
+
+    /**
+     * @var string document reason.
+     */
+    const FREQUENCIA_DIARIA = 'diario';
 }
