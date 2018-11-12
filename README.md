@@ -50,9 +50,9 @@ $result = $acc->info();
 
 Listar todos os documentos que não estão em uma pasta:
 ```php
-$page = 1
-$count = 60
-$s = '' // opcional
+$page = 1;
+$count = 60;
+$s = ''; // opcional
 $result = $doc->listNotInFolder($page, $count, $s);
 ```
 Resgata informações sobre documento específico
@@ -62,16 +62,16 @@ $result = $doc->retrieve($uuid);
 ```
 Lista apenas documentos recebidos que não estão em numa pasta
 ```php
-$page = 1
-$count = 60
-$s = '' // opcional
+$page = 1;
+$count = 60;
+$s = ''; // opcional
 $doc->listReceivedNotInFolder($page, $count, $s);
 ```
 Lista apenas documentos enviados
 ```php
-$page = 1
-$count = 60
-$s = '' // opcional
+$page = 1;
+$count = 60;
+$s = ''; // opcional
 $doc->listOnlySent($page, $count, $s);
 ```
 Criar um novo documento
@@ -85,7 +85,7 @@ $partes = [
 ];
 $arquivo = fopen('meu_arquivo.txt', 'r');
 $rejeitavel = false;
-$mensagem = 'Mensagem qualquer' // opcional
+$mensagem = 'Mensagem qualquer'; // opcional
 $lembreteAssinatura = false; // opcional
 $lembreteVencimento = true; // opcional
 $frequencia = 'semanal'; // ou 'diario' opcional
@@ -107,13 +107,13 @@ $doc->create(
 ```
 Reenviar email de assinatura para os signatários que não assinaram/rejeitaram
 ```php
-$uuid = '9ab23456325c40c2a5023051cf4bbf0e' // uuid do documento
-$result = $doc->resendNotSignedOrRejected($uuid);
+$uuid = '9ab23456325c40c2a5023051cf4bbf0e'; // uuid do documento
+$doc->resendNotSignedOrRejected($uuid);
 ```
 
 Remover documento
 ```php
-$uuid = '9ab23456325c40c2a5023051cf4bbf0e' // uuid do documento
+$uuid = '9ab23456325c40c2a5023051cf4bbf0e'; // uuid do documento
 $result = $doc->deleteDocument($uuid);
 ```
 
@@ -138,7 +138,7 @@ $result = $sign->reject($token, $motivo);
 ### Pasta
 Listar pasta
 ```php
-$s = '' // opcional
+$s = ''; // opcional
 $result = $folder->list($s);
 ```
 Resgatar informações da pasta
