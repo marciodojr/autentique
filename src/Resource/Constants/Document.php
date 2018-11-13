@@ -35,7 +35,7 @@ class Document
      * @var string document reason.
      */
     const FUNCAO_APROVAR = 'aprovar';
- 
+
     /**
      * @var string document reason.
      */

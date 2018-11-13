@@ -6,8 +6,6 @@
 
 namespace Mdojr\Autentique\Resource;
 
-use Mdojr\Autentique\Resource\Constants\Document as DocumentConstants;
-
 /**
  * This class allows document manipulation.
  */
@@ -98,7 +96,7 @@ class Document extends AbstractResource
      * @param string|null $mensagem           document message.
      * @param bool|null   $lembreteAssinatura sign remainder.
      * @param bool|null   $lembreteVencimento expiration date remainder.
-     * @param string|null    $frequencia         remainder sending.
+     * @param string|null $frequencia         remainder sending.
      * @param int|null    $diasVencimento     days left to due date.
      * @param string|null $dataVencimento     due date.
      *
@@ -122,7 +120,7 @@ class Document extends AbstractResource
             'nome'               => $nome,
             'partes'             => $partes,
             'arquivo'            => $arquivo,
-            'rejeitavel'         => $rejeitavel
+            'rejeitavel'         => $rejeitavel,
         ];
 
         if (!is_null($mensagem)) {
@@ -148,7 +146,7 @@ class Document extends AbstractResource
         if (!is_null($dataVencimento)) {
             $data['dataVencimento'] = $dataVencimento;
         }
-        
+
         $payload = $this->buildCreatePayload($data);
 
         $result = $this->post(self::PATH.'.json', [
