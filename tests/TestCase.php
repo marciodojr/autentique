@@ -21,6 +21,7 @@ abstract class TestCase extends BaseTestCase
     protected function getClient(Response $mockedResponse = null, $useBadToken = false)
     {
         $sandboxToken = getenv('AUTENTIQUE_TOKEN');
+        $endpoint = getenv('AUTENTIQUE_ENDPOINT');
         $token = self::MOCK_TOKEN;
 
         if ($useBadToken) {
@@ -30,8 +31,8 @@ abstract class TestCase extends BaseTestCase
         }
 
         $config = [
-            'base_uri' => Endpoint::SANDBOX,
-            'headers'  => [
+            'base_uri' => $endpoint ? $endpoint : Endpoint::SANDBOX,
+            'headers' => [
                 'X-Autntiq-Api' => $token,
             ],
         ];
