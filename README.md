@@ -91,6 +91,7 @@ $lembreteVencimento = true; // opcional
 $frequencia = 'semanal'; // ou 'diario' opcional
 $diasVencimento = 7; // opcional
 $dataVencimento = '2018-09-10'; // opcional
+$qrCode = 'B';  // opctional
 
 $doc->create(
     $nome,
@@ -102,7 +103,8 @@ $doc->create(
     $lembreteVencimento,
     $frequencia,
     $diasVencimento,
-    $dataVencimento
+    $dataVencimento,
+    $qrCode
 );
 ```
 Reenviar email de assinatura para os signatários que não assinaram/rejeitaram
@@ -194,6 +196,7 @@ composer test
 Caso queira testar contra o ambiente de sandbox:
 ```
 export AUTENTIQUE_TOKEN=sandbox_token
+export AUTENTIQUE_ENDPOINT=endpoint_url
 composer test
 ```
 

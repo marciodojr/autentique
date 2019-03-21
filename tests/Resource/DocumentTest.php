@@ -9,6 +9,7 @@ namespace Mdojr\Autentique\Resource;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use Mdojr\Autentique\Tests\TestCase;
+use Mdojr\Autentique\Resource\Constants\Document as DocumentConstants;
 
 class DocumentTest extends TestCase
 {
@@ -169,6 +170,30 @@ class DocumentTest extends TestCase
         $this->assertNotEmpty($data->nome);
     }
 
+    public function testCanCreateDocumentWithQRCode()
+    {
+        $document = $this->getDocument($this->setUpCanCreateDocument());
+
+        $docData = $this->getDocData();
+
+        $data = $document->create(
+            $docData[0], // nome
+            $docData[1], // partes
+            $docData[2], // arquivo
+            $docData[3],  // rejeitavel
+            null,   // message
+            null,   // sign reminder
+            null,   // expiration date reminder
+            null,   // reminder sending
+            null,   // days left to due date
+            null,   // due date
+            DocumentConstants::QRCODE_BOTTOM    // QR Code
+        );
+
+        $this->assertNotEmpty($data->uuid);
+        $this->assertNotEmpty($data->nome);
+    }
+
     public function setUpCreateDocumentThrowsError401()
     {
         return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/create-401.json'));
@@ -289,7 +314,7 @@ class DocumentTest extends TestCase
         $nome = 'Contrato de Emprestimo P2P';
         $partes = [
             [
-                'email'  => 'testando@fakeemail.com',
+                'email' => 'testando@fakeemail.com',
                 'funcao' => Constants\Document::FUNCAO_ASSINAR,
             ],
         ];
