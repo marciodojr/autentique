@@ -48,6 +48,5 @@ abstract class TestCase extends BaseTestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionCode(401);
-        $this->expectExceptionMessage('Você deve estar logado para acessar esta página.');
     }
 }

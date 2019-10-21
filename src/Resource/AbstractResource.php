@@ -69,7 +69,7 @@ abstract class AbstractResource
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
             $body = json_decode($response->getBody(), true);
-            $message = $body ? implode('. ', $body['errors']) : 'Erro inesperado';
+            $message = $body ? json_encode($body) : 'Erro inesperado';
 
             throw new Exception($message, $response->getStatusCode());
         }
