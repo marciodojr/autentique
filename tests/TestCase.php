@@ -32,7 +32,7 @@ abstract class TestCase extends BaseTestCase
 
         $config = [
             'base_uri' => $endpoint ? $endpoint : Endpoint::SANDBOX,
-            'headers' => [
+            'headers'  => [
                 'X-Autntiq-Api' => $token,
             ],
         ];
