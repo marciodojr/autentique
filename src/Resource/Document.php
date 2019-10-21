@@ -130,15 +130,15 @@ class Document extends AbstractResource
         }
 
         if (!is_null($lembreteAssinatura)) {
-            $data['lembreteAssinatura'] = $lembreteAssinatura;
+            $data['lembrete_assinatura'] = $lembreteAssinatura;
         }
 
         if (!is_null($lembreteVencimento)) {
-            $data['lembreteVencimento'] = $lembreteVencimento;
+            $data['lembrete_vencimento'] = $lembreteVencimento;
         }
 
         if (!is_null($diasVencimento)) {
-            $data['diasVencimento'] = $diasVencimento;
+            $data['dias_vencimento'] = $diasVencimento;
         }
 
         if (!is_null($frequencia)) {
@@ -146,7 +146,7 @@ class Document extends AbstractResource
         }
 
         if (!is_null($dataVencimento)) {
-            $data['dataVencimento'] = $dataVencimento;
+            $data['data_vencimento'] = $dataVencimento;
         }
 
         if (!is_null($qrcode)) {
