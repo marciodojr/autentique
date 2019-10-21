@@ -119,9 +119,9 @@ class Document extends AbstractResource
         string $qrcode = null
     ) {
         $data = [
-            'nome' => $nome,
-            'partes' => $partes,
-            'arquivo' => $arquivo,
+            'nome'       => $nome,
+            'partes'     => $partes,
+            'arquivo'    => $arquivo,
             'rejeitavel' => $rejeitavel,
         ];
 
@@ -209,11 +209,11 @@ class Document extends AbstractResource
 
         foreach ($data['partes'] as $idx => $value) {
             $payload[] = [
-                'name' => 'partes['.$idx.'][funcao]',
+                'name'     => 'partes['.$idx.'][funcao]',
                 'contents' => $value['funcao'] ?? null,
             ];
             $payload[] = [
-                'name' => 'partes['.$idx.'][email]',
+                'name'     => 'partes['.$idx.'][email]',
                 'contents' => $value['email'] ?? null,
             ];
         }
@@ -230,7 +230,7 @@ class Document extends AbstractResource
             }
 
             $payload[] = [
-                'name' => $key,
+                'name'     => $key,
                 'contents' => $value,
             ];
         }

@@ -8,8 +8,8 @@ namespace Mdojr\Autentique\Resource;
 
 use Exception;
 use GuzzleHttp\Psr7\Response;
-use Mdojr\Autentique\Tests\TestCase;
 use Mdojr\Autentique\Resource\Constants\Document as DocumentConstants;
+use Mdojr\Autentique\Tests\TestCase;
 
 class DocumentTest extends TestCase
 {
@@ -314,7 +314,7 @@ class DocumentTest extends TestCase
         $nome = 'Contrato de Emprestimo P2P';
         $partes = [
             [
-                'email' => 'testando@fakeemail.com',
+                'email'  => 'testando@fakeemail.com',
                 'funcao' => Constants\Document::FUNCAO_ASSINAR,
             ],
         ];
