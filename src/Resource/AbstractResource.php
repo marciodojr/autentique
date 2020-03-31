@@ -68,7 +68,7 @@ abstract class AbstractResource
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
             $body = $response->getBody()->getContents();
-            $message = $body ? $body : 'Erro inesperado. Status: ' . $response->getStatusCode();
+            $message = $body ? $body : 'Erro inesperado. Status: '.$response->getStatusCode();
 
             throw new Exception($message, $response->getStatusCode());
         }
