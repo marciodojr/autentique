@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Márcio Dias <marciojr91@gmail.com>
  * @license https://github.com/marciodojr/autentique/blob/master/LICENSE (MIT License)
@@ -26,7 +27,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanListNotInFolder()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/list-not-in-folder-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/list-not-in-folder-200.json'));
     }
 
     public function testCanListNotInFolder()
@@ -40,7 +41,7 @@ class DocumentTest extends TestCase
 
     private function setUpListNotInFolderThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/list-not-in-folder-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/list-not-in-folder-401.json'));
     }
 
     public function testListNotInFolderThrowsError401()
@@ -54,7 +55,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanRetrieveDocument()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/retrieve-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/retrieve-200.json'));
     }
 
     public function testCanRetrieveDocument()
@@ -67,7 +68,7 @@ class DocumentTest extends TestCase
 
     private function setUpRetrieveDocumentThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/retrieve-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/retrieve-401.json'));
     }
 
     public function testRetrieveDocumentThrowsError401()
@@ -80,7 +81,7 @@ class DocumentTest extends TestCase
 
     private function setUpRetrieveDocumentThrowsError404()
     {
-        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/document/retrieve-404.html'));
+        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/document/retrieve-404.html'));
     }
 
     public function testRetrieveDocumentThrowsError404()
@@ -94,7 +95,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanListReceivedDocsNotInFolder()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/can-list-received-not-in-folder-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/can-list-received-not-in-folder-200.json'));
     }
 
     public function testCanListReceivedDocsNotInFolder()
@@ -108,7 +109,7 @@ class DocumentTest extends TestCase
 
     private function setUpListReceivedDocsNotInFolderThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/can-list-received-not-in-folder-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/can-list-received-not-in-folder-401.json'));
     }
 
     public function testListReceivedDocsNotInFolderThrowsError401()
@@ -122,7 +123,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanListOnlySent()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/can-list-only-sent-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/can-list-only-sent-200.json'));
     }
 
     public function testCanListOnlySent()
@@ -136,7 +137,7 @@ class DocumentTest extends TestCase
 
     private function setUpListOnlySentThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/can-list-only-sent-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/can-list-only-sent-401.json'));
     }
 
     public function testListOnlySentThrowsError401()
@@ -150,7 +151,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanCreateDocument()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/create-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/create-200.json'));
     }
 
     public function testCanCreateDocument()
@@ -194,9 +195,48 @@ class DocumentTest extends TestCase
         $this->assertNotEmpty($data->nome);
     }
 
+    public function testCanCreateDocument20200331WithQRCode()
+    {
+        $doc = $this->getDocument($this->setUpCanCreateDocument());
+
+        $nome = 'Contrato de aluguel';
+        $partes = [
+            [
+                'email' => 'umemail@gmail.com',
+                'funcao' => 'assinar'
+            ]
+        ];
+        $arquivo = fopen(__DIR__ . '/../data/test-document.txt', 'r');
+        $rejeitavel = false;
+        $mensagem = 'Mensagem qualquer'; // opcional
+        $lembreteAssinatura = false; // opcional
+        $lembreteVencimento = true; // opcional
+        $frequencia = 'semanal'; // ou 'diario' opcional
+        $diasVencimento = 7; // opcional
+        $dataVencimento = '2018-09-10'; // opcional
+        $qrCode = 'B';  // opctional
+
+        $data = $doc->create(
+            $nome,
+            $partes,
+            $arquivo,
+            $rejeitavel,
+            $mensagem,
+            $lembreteAssinatura,
+            $lembreteVencimento,
+            $frequencia,
+            $diasVencimento,
+            $dataVencimento,
+            $qrCode
+        );
+
+        $this->assertNotEmpty($data->uuid);
+        $this->assertNotEmpty($data->nome);
+    }
+
     public function setUpCreateDocumentThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/create-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/create-401.json'));
     }
 
     public function testCreateDocumentThrowsError401()
@@ -214,7 +254,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanResendNotSignedOrRejected()
     {
-        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/document/can-resend-not-signed-or-rejected-200.html'));
+        return new Response(200, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/document/can-resend-not-signed-or-rejected-200.html'));
     }
 
     public function testCanResendNotSignedOrRejected()
@@ -227,7 +267,7 @@ class DocumentTest extends TestCase
 
     private function setUpResendNotSignedOrRejectedThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/can-resend-not-signed-or-rejected-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/can-resend-not-signed-or-rejected-401.json'));
     }
 
     public function testResendNotSignedOrRejectedThrowsError401()
@@ -240,7 +280,7 @@ class DocumentTest extends TestCase
 
     private function setUpResendNotSignedOrRejectedThrowsError404()
     {
-        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/document/can-resend-not-signed-or-rejected-404.html'));
+        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/document/can-resend-not-signed-or-rejected-404.html'));
     }
 
     public function testResendNotSignedOrRejectedThrowsError404()
@@ -254,7 +294,7 @@ class DocumentTest extends TestCase
 
     private function setUpCanDeleteDocument()
     {
-        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/delete-200.json'));
+        return new Response(200, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/delete-200.json'));
     }
 
     public function testCanDeleteDocument()
@@ -267,7 +307,7 @@ class DocumentTest extends TestCase
 
     private function setUpDeleteDocumentThrowsError401()
     {
-        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__.'/../data/document/delete-401.json'));
+        return new Response(401, ['Content-Type' => 'application/json'], file_get_contents(__DIR__ . '/../data/document/delete-401.json'));
     }
 
     public function testCanDeleteDocumentThrowsError401()
@@ -280,7 +320,7 @@ class DocumentTest extends TestCase
 
     private function setUpDeleteDocumentThrowsError404()
     {
-        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__.'/../data/document/delete-404.html'));
+        return new Response(404, ['Content-Type' => 'text/html'], file_get_contents(__DIR__ . '/../data/document/delete-404.html'));
     }
 
     public function testCanDeleteDocumentThrowsError404()
@@ -318,7 +358,7 @@ class DocumentTest extends TestCase
                 'funcao' => Constants\Document::FUNCAO_ASSINAR,
             ],
         ];
-        $arquivo = fopen(__DIR__.'/../data/test-document.txt', 'r');
+        $arquivo = fopen(__DIR__ . '/../data/test-document.txt', 'r');
         $rejeitavel = false;
 
         return [$nome, $partes, $arquivo, $rejeitavel];

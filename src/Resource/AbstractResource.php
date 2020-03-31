@@ -57,7 +57,6 @@ abstract class AbstractResource
     {
         try {
             $response = $this->client->request($method, $path, $payload);
-            $code = $response->getStatusCode();
             $responseContentType = $response->getHeaderLine('Content-Type');
             $body = $response->getBody();
 
@@ -68,8 +67,8 @@ abstract class AbstractResource
             return $body->getContents();
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
-            $body = json_decode($response->getBody(), true);
-            $message = $body ? json_encode($body) : 'Erro inesperado';
+            $body = $response->getBody()->getContents();
+            $message = $body ? $body : 'Erro inesperado. Status: ' . $response->getStatusCode();
 
             throw new Exception($message, $response->getStatusCode());
         }
