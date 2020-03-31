@@ -2,4 +2,3 @@
 .vscode
 /coverage
 /build
-composer.lock

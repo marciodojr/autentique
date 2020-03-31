@@ -22,9 +22,9 @@ use Mdojr\Autentique\Endpoint;
 use GuzzleHttp\Client;
 
 $client = new Client([
-    'base_uri' => Endpoint::SANDBOX, // or Endpoint::PRODUCTION
+    'base_uri' => Endpoint::PRODUCTION,
     'headers' => [
-        'X-Autntiq-Api' => $sandboxToken // respectively $productionToken
+        'X-Autntiq-Api' => $productionToken
     ]
 ]);
 
@@ -188,7 +188,7 @@ https://autentique.docs.apiary.io
 
 ## Como testar
 
-Por padrão nenuma requisição é feita contra o ambiente de sandbox:
+Por padrão todas as requisições são simuladas:
 ```
 composer test
 ```
