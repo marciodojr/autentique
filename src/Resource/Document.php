@@ -100,6 +100,7 @@ class Document extends AbstractResource
      * @param int|null    $diasVencimento     days left to due date
      * @param string|null $dataVencimento     due date
      * @param string|null $qrcode             QRcode type (B: bottom, L: left, R: right)
+	 * @param bool|false  $sandbox            is a flag to use sandbox function
      *
      * @return \stdClass new document info
      *
@@ -116,7 +117,8 @@ class Document extends AbstractResource
         string $frequencia = null,
         int $diasVencimento = null,
         string $dataVencimento = null,
-        string $qrcode = null
+        string $qrcode = null,
+		bool $sandbox = false
     ) {
         $data = [
             'nome'       => $nome,
@@ -124,6 +126,10 @@ class Document extends AbstractResource
             'arquivo'    => $arquivo,
             'rejeitavel' => $rejeitavel,
         ];
+		
+		if ($sandbox) {
+			$data['sandbox'] = true;
+		}
 
         if (!is_null($mensagem)) {
             $data['mensagem'] = $mensagem;
