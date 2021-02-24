@@ -13,7 +13,7 @@ class Endpoint
 {
     /**
      * @var string Sandbox endpoint.
-	 * This URI was deprecated in v2 from API.
+     * This Endpoint was deprecated in v2 from API.
      */
     //const SANDBOX = 'https://sandbox.autentique.com.br';
 
