@@ -15,7 +15,7 @@ class Endpoint
      * @var string Sandbox endpoint.
      * This Endpoint was deprecated in v2 from API.
      */
-    //const SANDBOX = 'https://sandbox.autentique.com.br';
+    const SANDBOX = 'https://sandbox.autentique.com.br';
 
     /**
      * @var string Production endpoint.
