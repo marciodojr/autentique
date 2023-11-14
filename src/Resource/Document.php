@@ -209,12 +209,18 @@ class Document extends AbstractResource
 
         foreach ($data['partes'] as $idx => $value) {
             $payload[] = [
-                'name'     => 'partes['.$idx.'][funcao]',
+                'name'     => 'partes[' . $idx . '][funcao]',
                 'contents' => $value['funcao'] ?? null,
             ];
+
+            $typeValueSigner = 'nome';
+            if (array_key_exists('email', $value)) {
+                $typeValueSigner = 'email';
+            }
+
             $payload[] = [
-                'name'     => 'partes['.$idx.'][email]',
-                'contents' => $value['email'] ?? null,
+                'name'     => "partes[" . $idx . "][{$typeValueSigner}]",
+                'contents' => $value[$typeValueSigner] ?? null,
             ];
         }
 
